@@ -1,0 +1,77 @@
+<div *ngIf="users | async as users; else loading">
+  <div class="container">
+    <div class="row">
+      <h1 class="tittle">Usuarios Body Sanctuary</h1>
+      <div class="div">
+        <input class="form-control" type="text" placeholder="Buscar usuario..." aria-label="default input example">
+      </div>
+    </div>
+
+    <div class="row">
+      <table class="table table-hover caption-top">
+        <caption>Lista de usuarios</caption>
+        <thead>
+          <tr>
+            <th># ID</th>
+            <th>Correo</th>
+            <th>Nombre</th>
+            <th>Date</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+          <tbody *ngFor="let data of users">
+            <tr>
+              <td> {{data.id}} </td>
+              <td> {{data.email}} </td>
+              <td> {{data.name}} </td>
+              <td> {{data.createdAt}} </td>
+              <td>Editar/eliminar</td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+  <ng-template #loading>
+    <p>Cargando...</p>
+  </ng-template>
+
+
+
+  <div class="container w-75 nt-5 rounded shadow">
+    <div class="row align-items-stretch">
+      <div class="col bgLeft d-none d-lg-block col-md-5 col-lg-5"></div>
+      <div class="col bgCol p-5 rounded-end">
+
+        <h2 class="fw-bold text center py-5 text-center clrTittle">Crea:</h2>
+
+        <!-----Login----->
+        <form action="#">
+
+          <div class="mb-4">
+            <label for="nombre" class="form-label">Ingresa nombre:</label>
+            <input type="nombre" class="form-control" formControlName="text" placeholder="Nombre...">
+          </div>
+
+          <div class="mb-4">
+            <label for="email" class="form-label">Correo electrónico:</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Email">
+          </div>
+
+          <div class="mb-4">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="Password">
+          </div>
+
+          <div class="d-grid">
+            <button id="btnColor">Guardar
+            </button>
+          </div>
+
+        </form>
+        <!-----Login----->
+
+      </div>
+    </div>
+  </div>
