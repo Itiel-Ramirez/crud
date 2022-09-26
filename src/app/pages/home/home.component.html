@@ -23,7 +23,8 @@
               <td> {{data.email}} </td>
               <td> {{data.name}} </td>
               <td> {{data.createdAt}} </td>
-              <td> <i class="bi bi-pencil-square fa-lg text-info" routerLink="/update-user"> </i>
+              <td> <i class="bi bi-pencil-square fa-lg text-info"
+                      [routerLink]="['/update-user/', data.id]"> </i>
                 <i class="bi bi-trash3-fill text-danger" (click)="delete(data)" clickable> </i>
               </td>
             </tr>
