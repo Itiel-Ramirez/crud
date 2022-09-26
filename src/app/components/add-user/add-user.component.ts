@@ -37,7 +37,7 @@ export class AddUserComponent {
       .subscribe({
         next: () =>{
           this.router.navigate(['/usuarios']);
-          console.log('funciba')
+          console.log('funciona!')
         },
       })
       error: ({ error }: HttpErrorResponse) => {

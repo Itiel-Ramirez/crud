@@ -23,12 +23,11 @@ export class HomeComponent implements OnInit {
   }
 
   delete(user: User) {
-    console.log('as')
     this.usersService.delete(user)
       .subscribe({
         next: () =>{
           this.users = this.usersService.users('');
-          console.log('funciba')
+          console.log('funcina!')
         },
       })
       error: ({ error }: HttpErrorResponse) => {
