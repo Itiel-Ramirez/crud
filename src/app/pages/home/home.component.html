@@ -24,8 +24,7 @@
               <td> {{data.name}} </td>
               <td> {{data.createdAt}} </td>
               <td> <i class="bi bi-pencil-square fa-lg text-info" routerLink="/update-user"> </i>
-                   <button class="bi bi-trash3-fill text-danger" type="button" (myClick)="delete(data)" clickable>  </button>
-                   <button type="button" (click)="delete(data)" clickable>hs</button>
+                <i class="bi bi-trash3-fill text-danger" (click)="delete(data)" clickable> </i>
               </td>
             </tr>
           </tbody>
