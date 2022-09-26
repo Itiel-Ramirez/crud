@@ -1,37 +1,9 @@
 .tittle {
   color: #80c8c4;
+  font-size: 3.5rem;
 }
 
-.bgCol {
-  background: linear-gradient(to right, #bee1df, #e3c8de);
-  border-radius: 5px;
-}
-
-.clrTittle {
-  color: #ffffff;
-  font-family: Lato;
-}
-
-#btnColor {
-  font-style: bold;
-  background: linear-gradient(to left, #bee1df, #e3c8de);
-}
-
-mat-spinner {
-  display: inline !important;
-  vertical-align: unset !important;
-}
-
-.btn-form {
-  color: white;
-  font-size: 1.3rem;
-  padding: 4px 96px !important;
-  border-radius: 32px !important;
-}
-
-@media (max-width: 767.5px) {
-.btn-form {
-    font-size: 1rem;
-    padding: 2px 1rem !important;
-  }
+i {
+  cursor: pointer;
+  margin-right: 4px;
 }
