@@ -1,23 +1,36 @@
 <div class="container">
   <div class="row mt-4">
     <div class="col-lg-6 offset-lg-3">
-      <div class="card text-center">
+      <div class="card">
         <div class="card-body">
-          <h1>Agregar usuario</h1>
-          <span *ngIf="submited && createUser.invalid" class="badge badge-danger">TODOS LOS CAMPOS SON OBLIGATORIOS</span>
-          <form class="mt-4" [formGroup]="createUser" (ngSubmit)="agregarUsuario()">
+          <h1>Agregar usuario:</h1>
+
+          <form class="mt-4" [formGroup]="formCreate" (ngSubmit)="save()">
             <div class="row">
               <div class="col">
-                <input type="text" class="form-control form-control-lg mt-4" formControlName="name" placeholder="Nombre...">
+
+                <input type="text" class="form-control form-control-lg mt-4" formControlName="name" placeholder="Nombre..." required>
+                <span class="form-text text-danger"
+                      *ngIf="validField('name')">
+                  *Deben ser minimo 3 letras
+                </span>
 
                 <input type="email" class="form-control form-control-lg mt-4" formControlName="email" placeholder="E-mail...">
+                <span class="form-text text-danger"
+                      *ngIf="validField('email')">
+                  *Debe ser de tipo E-mail
+                </span>
 
                 <input type="password" class="form-control form-control-lg mt-4" formControlName="password" placeholder="Password...">
+                <span class="form-text text-danger"
+                      *ngIf="validField('password')">
+                  *Debe contener almenos 8 caracteres
+                </span>
 
                 <div class="mt-3">
                   <button type="text" class="btn btn-secondary btn-lg mr-3" routerLink="/usuarios">Volver</button>
 
-                  <button type="submit" class="btn btn-dark btn-lg">Guardar</button>
+                  <button type="submit" class="btn btn-dark btn-lg" [disabled]="formCreate.invalid">Guardar</button>
                 </div>
               </div>
             </div>

@@ -1,42 +1,43 @@
-import { UsersService } from './../../services/users.service';
-import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UsersService } from '../../services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.css']
 })
-export class AddUserComponent implements OnInit {
+export class AddUserComponent {
 
-  createUser: FormGroup;
-  submited = false;
+  formCreate: FormGroup = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, Validators.minLength(9)]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
+  })
 
   constructor( private fb: FormBuilder,
-               private _UsersSrevice: UsersService) {
-    this.createUser = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    })
+               private router: Router,
+               private usersService: UsersService ) {
   }
 
-  ngOnInit(): void {
+  validField( field: string) {
+    return this.formCreate.controls[field].errors
+        && this.formCreate.controls[field].touched
   }
 
-  agregarUsuario() {
-    this.submited = true;
-
-    if(this.createUser.invalid) {
+  save() {
+    if( this.formCreate.invalid ) {
+      this.formCreate.markAllAsTouched();
       return;
     }
-    const usuario: any = {
-      name: this.createUser.value.name,
-      email: this.createUser.value.email,
-      password: this.createUser.value.password,
-      dateCreation: new Date(),
-      dateUpdate: new Date(),
-    }
+    console.log(this.formCreate.value)
+    this.formCreate.reset();
   }
 
+  register() {
+    const {name, email, password } = this.formCreate.value;
+
+  }
 }
