@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -31,13 +32,18 @@ export class AddUserComponent {
     if( this.formCreate.invalid ) {
       this.formCreate.markAllAsTouched();
       return;
+    } else {
+      this.usersService.create(this.formCreate.value)
+      .subscribe({
+        next: () =>{
+          this.router.navigate(['/usuarios']);
+          console.log('funciba')
+        },
+      })
+      error: ({ error }: HttpErrorResponse) => {
+        Swal.fire('Error', error.msg || 'Error al iniciar sesión', 'error');
+      }
     }
-    console.log(this.formCreate.value)
     this.formCreate.reset();
-  }
-
-  register() {
-    const {name, email, password } = this.formCreate.value;
-
   }
 }
